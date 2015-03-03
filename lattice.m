@@ -1,21 +1,26 @@
+function [S, I, R, L] = lattice(N, T, alpha)
+
+% lattice(N, T, alpha)
+%
 % Simulates the spread of a rumor using the synchronous stochastic 
-% cellular automaton SIR model.
+% cellular automaton model.
+% 
+% Parameters:
+%
+% N: Square root of population
+% T: Number of steps
+% alpha: Spreading coefficient in [0, 1]
+% 
+% Return values:
+%
+% S: Number of susceptible people over time
+% I: Number of infected people over time
+% R: Number of removed people over time
+% L: Final lattice
 
-%% Initialize definitions and parameters
-
-SUS = 1;        % Susceptible
-INF = 2;        % Infected
-REM = 3;        % Removed
-
-N = 100;        % Square root of population
-T = 1000;       % Number of steps
-
-% Probabilities should be in [0, 1]
-alpha = 0.6;    % spreading coefficient
-
-source = [50, 50];
-
-%% Simulate
+SUS = 1;
+INF = 2;
+REM = 3;
 
 L = zeros(N, N);
 
@@ -25,7 +30,7 @@ for ii=1:N
     end
 end
 
-L(source(1), source(2)) = INF;
+L(floor(N/2), floor(N/2)) = INF;
 
 S = zeros(T, 1);
 I = zeros(T, 1);
@@ -40,14 +45,14 @@ for step=2:T
     for ii=1:N
         for jj=1:N
             if Lold(ii, jj) == INF
-                cell = rand;
+                rr = rand;
                 offsetx = 0;
                 offsety = 0;
-                if cell < 0.25
+                if rr < 0.25
                     offsetx = 1;
-                elseif cell < 0.5
+                elseif rr < 0.5
                     offsetx = -1;
-                elseif cell < 0.75
+                elseif rr < 0.75
                     offsety = 1;
                 else
                     offsety = -1;
@@ -81,49 +86,4 @@ for step=2:T
     end
 end
 
-%% Plot solution curves
-
-tt = 1:T;
-
-clf;
-
-hold all;
-
-set(gca, 'FontSize', 15, 'LineWidth', 1);
-
-plot(tt, S, 'k', 'LineWidth', 2);
-plot(tt, I, 'r', 'LineWidth', 2);
-plot(tt, R, 'b', 'LineWidth', 2);
-
-axis([0, T, 0, N*N]);
-title('Lattice Model of a Rumor');
-xlabel('steps');
-ylabel('people');
-legend('S(t)', 'I(t)', 'R(t)');
-
-hold off;
-
-%% Plot lattice
-
-clf;
-
-hold all;
-
-set(gca, 'FontSize', 15, 'LineWidth', 1);
-
-for ii=1:N
-    for jj=1:N
-        if L(ii, jj) == INF
-            plot(ii, jj, 'r.');
-        elseif  L(ii, jj) == REM
-            plot(ii, jj, 'b.');
-        end
-    end
 end
-
-plot(source(1), source(2), 'k.', 'MarkerSize', 32);
-
-axis([0, N+1, 0, N+1]);
-title('Lattice Model of a Rumor');
-
-hold off;

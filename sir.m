@@ -56,6 +56,6 @@ axis([0, T, 0, N]);
 title('SIR Model of a Rumor');
 xlabel('time');
 ylabel('people');
-legend('S(t)', 'I(t)', 'R(t)');
+legend('S', 'I', 'R');
 
 hold off;
