@@ -11,7 +11,7 @@ REM = 3;
 N = 100;        % Square root of population
 T = 5000;       % Number of steps
 
-alpha = 0.6;    % Spreading coefficient in [0, 1]
+alpha = 0.5;    % Spreading coefficient in [0, 1]
 
 %% Simulate
 
@@ -53,7 +53,7 @@ for ii=1:N
     end
 end
 
-plot(floor(N/2), floor(N/2), 'ko', 'MarkerFaceColor', 'k', 'MarkerSize', 16);
+plot(floor(N/2), floor(N/2), 'ko', 'MarkerFaceColor', 'k', 'MarkerSize', 4);
 
 axis([0, N+1, 0, N+1]);
 title('Lattice Model of a Rumor');

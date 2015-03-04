@@ -13,7 +13,7 @@ N = 100;        % Square root of population
 T = 5000;       % Number of steps
 trials = 1000;  % Number of trials
 
-alpha = 0.6;    % Spreading coefficient in [0, 1]
+alpha = 0.5;    % Spreading coefficient in [0, 1]
 
 %% Simulate
 
@@ -68,13 +68,10 @@ for ii=1:N
         ha = plot(ii, jj, 's', 'MarkerSize', 4);
         set(ha, 'color', [1-Lavg(ii, jj), 1-Lavg(ii, jj), 1]);
         set(ha, 'MarkerFaceColor', [1-Lavg(ii, jj), 1-Lavg(ii, jj), 1]);
-        %elseif  L(ii, jj) == REM
-        %    plot(ii, jj, 'bs', 'MarkerFaceColor', 'b', 'MarkerSize', 4);
-        %end
     end
 end
 
-plot(floor(N/2), floor(N/2), 'ko', 'MarkerFaceColor', 'k', 'MarkerSize', 16);
+plot(floor(N/2), floor(N/2), 'ko', 'MarkerFaceColor', 'k', 'MarkerSize', 4);
 
 axis([0, N+1, 0, N+1]);
 title('Lattice Model of a Rumor');
