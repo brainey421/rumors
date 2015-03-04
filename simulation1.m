@@ -1,5 +1,6 @@
 % Simulates the spread of one rumor using the synchronous stochastic 
-% cellular automaton SIR model.
+% cellular automaton SIR model. Plots the solution curves and the final 
+% lattice.
 
 %% Initialize definitions and parameters
 
@@ -8,9 +9,9 @@ INF = 2;
 REM = 3;
 
 N = 100;        % Square root of population
-T = 1000;       % Number of steps
+T = 5000;       % Number of steps
 
-alpha = 0.55;    % Spreading coefficient in [0, 1]
+alpha = 0.6;    % Spreading coefficient in [0, 1]
 
 %% Simulate
 

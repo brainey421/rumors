@@ -66,6 +66,13 @@ for step=2:T
                         L(neighbor(1), neighbor(2)) = REM;
                     end
                 end
+                
+                if Lold(ii, mod(jj, N) + 1) ~= SUS ...
+                        && Lold(ii, mod(jj - 2, N) + 1) ~= SUS ...
+                        && Lold(mod(ii, N) + 1, jj) ~= SUS ...
+                        && Lold(mod(ii - 2, N) + 1, jj) ~= SUS
+                    L(ii, jj) = REM;
+                end
             end
         end
     end
