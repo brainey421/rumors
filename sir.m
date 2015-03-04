@@ -7,15 +7,15 @@ N = 10000;      % population
 T = 0.01;       % total time
 
 % Probabilities should be in [0, 1]
-alpha = 0.5;    % spreading coefficient
-beta = 0.5;     % quashing coefficient
+alpha = 0.4;    % spreading coefficient
+beta = 0.6;     % quashing coefficient
 
 h = 0.0001;     % step size for Euler's method
 
 % System of differential equations
 Sprime = @(S, I, R)(-S*I);
-Iprime = @(S, I, R)(alpha*S*I - beta*I*(I + R));
-Rprime = @(S, I, R)((1-alpha)*S*I + beta*I*(I + R));
+Iprime = @(S, I, R)(alpha*S*I - beta*I*(2*I + R));
+Rprime = @(S, I, R)((1-alpha)*S*I + beta*I*(2*I + R));
 
 % Initial condition
 I1 = 1;
