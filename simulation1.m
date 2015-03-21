@@ -11,7 +11,7 @@ REM = 3;
 N = 100;        % Square root of population
 T = 5000;       % Number of steps
 
-alpha = 0.5;    % Spreading coefficient in [0, 1]
+alpha = 0.55;    % Spreading coefficient in [0, 1]
 
 %% Simulate
 

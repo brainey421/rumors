@@ -13,7 +13,7 @@ N = 100;        % Square root of population
 T = 5000;       % Number of steps
 trials = 1000;  % Number of trials
 
-alpha = 0.5;    % Spreading coefficient in [0, 1]
+alpha = 0.65;    % Spreading coefficient in [0, 1]
 
 %% Simulate
 

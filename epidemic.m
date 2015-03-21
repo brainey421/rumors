@@ -1,22 +1,21 @@
-% Computes and plots solution curves for the SIR model of a rumor 
+% Computes and plots solution curves for the SIR model of an epidemic 
 % using Euler's method.
 
 %% Initialize parameters and functions
 
 N = 10000;      % population
-T = 150;       % total time
+T = 200;        % total time
 
 % Probabilities should be in [0, 1]
-alpha = 0.5;    % spreading coefficient
-beta = 0.5;     % quashing coefficient
-gamma = 0.5;    % recruiting coefficient
+alpha = 0.6;    % spreading coefficient
+beta = 0.4;     % recovery coefficient
 
-h = 0.01;     % step size for Euler's method
+h = 0.01;       % step size for Euler's method
 
 % System of differential equations
 Sprime = @(S, I, R)(-alpha*S*I/N);
-Iprime = @(S, I, R)(gamma*alpha*S*I/N - beta*I*(2*I + R)/N);
-Rprime = @(S, I, R)((1-gamma)*alpha*S*I/N + beta*I*(2*I + R)/N);
+Iprime = @(S, I, R)(alpha*S*I/N - beta*I);
+Rprime = @(S, I, R)(beta*I);
 
 % Initial condition
 I1 = 1;
@@ -53,7 +52,7 @@ plot(tt, S, 'k', 'LineWidth', 1);
 plot(tt, I, 'r', 'LineWidth', 2);
 plot(tt, R, 'b', 'LineWidth', 4);
 
-axis([0, T, 0, N + 0.05*N]);
+axis([0, T, 0, N+0.05*N]);
 xlabel('time');
 ylabel('people');
 legend('S(t)', 'I(t)', 'R(t)');
